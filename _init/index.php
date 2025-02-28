@@ -17,6 +17,7 @@
 		}
 	}
 	$c -> close();
+
 	function fillDatabase( $c ){
 		$d = queryIfTableExists( "urzadzenia" );
 		$e = queryIfTableExists( "wydarzenia" );
@@ -47,9 +48,9 @@
 		}
 		else printMessageWithTimestampNewline( "Baza danych jest już wypełniona danymi" );
 	}
-	
+
 	function queryIfTableExists( $t ){ return "SELECT count(*) FROM information_schema.tables WHERE table_schema = 'database_app' AND table_name = '$t';"; }
 	function queryIfAnyRecordExists( $t ){ return "SELECT count(*) FROM $t"; }
-	
+
 	function printMessageWithTimestampNewline( $m ){ print( "[ ".date( "G:i:s", time() )." ] $m<br/>" ); };
 ?>
