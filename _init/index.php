@@ -24,18 +24,21 @@
 		function fillDatabase( $c ){
 			$d = queryIfTableExists( "urzadzenia" );
 			$e = queryIfTableExists( "wydarzenia" );
-			if( $c -> query( $d ) + $c -> query( $e ) !== 2 ){		
+			// Check if tables exist if not create them
+			if( $c -> query( $d ) -> fetch_row()[ 0 ] + $c -> query( $e ) -> fetch_row()[ 0 ] !== 2 ){
 				if( file_exists( "../tables.sql" ) ){
 					$f = file_get_contents( "../tables.sql" );
 					$q = $c -> query( $f );
-					if( $q -> error == "" )	print( "Baza danych została wypełniona\n" );
+					if( $q -> error == "" )	print( "Baza danych została wypełniona tabelami\n" );
 					else print( $q -> error );
 				}
 			}
-			if
+			// Check if data in tables exist if not fill them
+			// if()
 		}
 		
-		function queryIfTableExists( $t, $d ){ return "SELECT count(*) FROM information_schema.tables WHERE table_schema = '$d' AND table_name = '$t';"; }
+		function queryIfTableExists( $t ){ return "SELECT count(*) FROM information_schema.tables WHERE table_schema = 'database_app' AND table_name = '$t';"; }
+		function queryIfAnyRecordExists( $t ){ return "SELECT count(*) FROM $t"; }
 	?>
 </body>
 </html>
