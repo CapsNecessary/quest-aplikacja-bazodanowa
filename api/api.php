@@ -22,7 +22,21 @@
 				}
 				break;
 			case 'POST':
-				
+				$uwiw = $in[ 'uwiw' ];
+				$kat = $in[ 'kat' ];
+				$sala = $in[ 'sala' ];
+				$lpWSali = $in[ 'lpWSali' ];
+				$model = $in[ 'model' ];
+				$wyglad = $in[ 'wyglad' ];
+				$processor = $in[ 'processor' ];
+				$ram = $in[ 'ram' ];
+				$plyta = $in[ 'plyta' ];
+				$dysk = $in[ 'dysk' ];
+				$przkatna = $in[ 'przkatna' ];
+				$mac = $in[ 'mac' ];
+				$linecje = $in[ 'linecje' ];
+				$inne = $in[ 'inne' ];
+				// INSERT INTO `urzadzenia`( `uwiw`, `kategoria`, `sala`, `lpwsali`, `model`, `wyglad`, `procesor`, `ram`, `plyta`, `dysk`, `przekatna`, `mac`, `licencje`, `inne`) VALUES ('[value-2]','[value-3]','[value-4]','[value-5]','[value-6]','[value-7]','[value-8]','[value-9]','[value-10]','[value-11]','[value-12]','[value-13]','[value-14]','[value-15]')
 				break;
 			default:
 				break;
