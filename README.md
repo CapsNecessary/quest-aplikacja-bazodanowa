@@ -1,0 +1,1 @@
+[Zadanie z zawodowych](https://edu-update.pl/quest-aplikacja-bazodanowa-cz-1/)
