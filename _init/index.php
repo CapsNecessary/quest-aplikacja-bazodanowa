@@ -4,14 +4,15 @@
 	$c = mysqli_connect( "localhost", "root", "" );
 	if( $c -> connect_error ) printMessageWithTimestampNewline( "Błąd podczas połączenia się z serwerem" );
 	else{
-		$d = mysqli_connect( "localhost", "root", "", "database_app" );
-		if( $d == false ){
+		if( $c -> query( "SELECT COUNT(*) AS `exists` FROM INFORMATION_SCHEMA.SCHEMATA WHERE SCHEMATA.SCHEMA_NAME='database_app'" ) -> fetch_row()[ 0 ] != 1 ){
 			if( $c -> query( "CREATE DATABASE database_app;" ) == true ){
+				$d = mysqli_connect( "localhost", "root", "", "database_app" );
 				printMessageWithTimestampNewline( "Baza danych została dobrze utworzona" );
 				fillDatabase( $d );
 			}
 		}
 		else{
+			$d = mysqli_connect( "localhost", "root", "", "database_app" );
 			printMessageWithTimestampNewline( "Baza danych już istnieje" );
 			fillDatabase( $d );
 		}
