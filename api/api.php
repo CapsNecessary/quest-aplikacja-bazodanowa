@@ -6,6 +6,22 @@
 		$in = json_decode( file_get_contents('php://input'), true );
 		switch ( $m ){
 			case 'GET':
+				switch( $_GET['table'] ) {
+					case 'urzadzenia':
+						printTableAsJson( 'urzadzenia' )l
+						break;
+					case 'uzytkownicy':
+						printTableAsJson( `uzytkownicy` );
+						break;
+					case 'wydarzenia':
+						printTableAsJson( `wydarzenia` );
+						break;
+					default:
+						http_response_code( 418 );
+						break;
+				}
+				break;
+			case 'POST':
 				
 				break;
 			default:
@@ -13,4 +29,9 @@
 		}
 	}
 	$c -> close();
+	
+	function printTableAsJson( $t ){
+		global $c;
+		print( json_encode( $c -> query( "SELECT * FROM `$t`" ) -> fetch_assoc() ) );
+	}
 ?>
