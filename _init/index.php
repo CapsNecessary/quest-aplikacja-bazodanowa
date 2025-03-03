@@ -8,30 +8,32 @@
 			if( $c -> query( "CREATE DATABASE database_app;" ) == true ){
 				$d = mysqli_connect( "localhost", "root", "", "database_app" );
 				printMessageWithTimestampNewline( "Baza danych została dobrze utworzona" );
-				fillDatabase( $d );
+				fillDatabase();
 			}
 		}
 		else{
 			$d = mysqli_connect( "localhost", "root", "", "database_app" );
 			printMessageWithTimestampNewline( "Baza danych już istnieje" );
-			fillDatabase( $d );
+			fillDatabase();
 		}
 	}
 	$c -> close();
 
-	function fillDatabase( $c ){
+	function fillDatabase(){
+		$c = mysqli_connect( "localhost", "root", "", "database_app" );
 		$d = queryIfTableExists( "urzadzenia" );
+		$u = queryIfTableExists( "uzytkownicy" );
 		$e = queryIfTableExists( "wydarzenia" );
 		// Check if tables exist if not create them
-		if( $c -> query( $d ) -> fetch_row()[ 0 ] + $c -> query( $e ) -> fetch_row()[ 0 ] !== 2 ){
+		if( $c -> query( $d ) -> fetch_row()[ 0 ] + $c -> query( $u ) -> fetch_row()[ 0 ] + $c -> query( $e ) -> fetch_row()[ 0 ] !== 3 ){
 			if( file_exists( "../tables.sql" ) ){
 				$f = file_get_contents( "../tables.sql" );
-				$q = $c -> query( $f );
-				if( $q -> error == "" ){
+				$q = $c -> multi_query( $f );
+				if( $q ){
 					printMessageWithTimestampNewline( "Baza danych została wypełniona tabelami" );
 					goto fillingTables;
 				}
-				else printMessageWithTimestampNewline( $q -> error );
+				else printMessageWithTimestampNewline( "Bład podczas wypełniania bazy tabelami" );
 			}
 		}
 		else printMessageWithTimestampNewline( "Baza danych ma już tabele" );
@@ -42,9 +44,9 @@
 			fillingTables:
 			if( file_exists( "../data.sql" ) ){
 				$f = file_get_contents( "../data.sql" );
-				$q = $c -> query( $f );
-				if( $q -> error == "" ) printMessageWithTimestampNewline( "Baza danych została wypełniona danymi" );
-				else printMessageWithTimestampNewline( $q -> error );
+				$q = $c -> multi_query( $f );
+				if( $q ) printMessageWithTimestampNewline( "Baza danych została wypełniona danymi" );
+				else printMessageWithTimestampNewline( "Błąd podczas wypełniania tabeli" );
 			}
 		}
 		else printMessageWithTimestampNewline( "Baza danych jest już wypełniona danymi" );
