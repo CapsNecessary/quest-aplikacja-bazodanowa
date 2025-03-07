@@ -8,7 +8,7 @@
 			case 'GET':
 				switch( $_GET['table'] ) {
 					case 'urzadzenia':
-						printTableAsJson( 'urzadzenia' )l
+						printTableAsJson( 'urzadzenia' );
 						break;
 					case 'uzytkownicy':
 						printTableAsJson( `uzytkownicy` );
@@ -17,30 +17,51 @@
 						printTableAsJson( `wydarzenia` );
 						break;
 					default:
-						http_response_code( 418 );
+						http_response_code( 404 );
 						break;
 				}
 				break;
 			case 'POST':
-				$uwiw = $in[ 'uwiw' ];
-				$kat = $in[ 'kat' ];
-				$sala = $in[ 'sala' ];
-				$lpWSali = $in[ 'lpWSali' ];
-				$model = $in[ 'model' ];
-				$wyglad = $in[ 'wyglad' ];
-				$processor = $in[ 'processor' ];
-				$ram = $in[ 'ram' ];
-				$plyta = $in[ 'plyta' ];
-				$dysk = $in[ 'dysk' ];
-				$przkatna = $in[ 'przkatna' ];
-				$mac = $in[ 'mac' ];
-				$linecje = $in[ 'linecje' ];
-				$inne = $in[ 'inne' ];
-				// INSERT INTO `urzadzenia`( `uwiw`, `kategoria`, `sala`, `lpwsali`, `model`, `wyglad`, `procesor`, `ram`, `plyta`, `dysk`, `przekatna`, `mac`, `licencje`, `inne`) VALUES ('[value-2]','[value-3]','[value-4]','[value-5]','[value-6]','[value-7]','[value-8]','[value-9]','[value-10]','[value-11]','[value-12]','[value-13]','[value-14]','[value-15]')
+				$uwiw		= $in[ 'uwiw' ];			$kat		= $in[ 'kat' ];
+				$sala		= $in[ 'sala' ];			$lpWSali	= $in[ 'lpWSali' ];
+				$model		= $in[ 'model' ];			$wyglad		= $in[ 'wyglad' ];
+				$processor	= $in[ 'processor' ];		$ram		= $in[ 'ram' ];
+				$plyta		= $in[ 'plyta' ];			$dysk		= $in[ 'dysk' ];
+				$przekatna	= $in[ 'przekatna' ];		$mac		= $in[ 'mac' ];
+				$licencje	= $in[ 'licencje' ];		$inne		= $in[ 'inne' ];
+				$q = $c -> prepare( "INSERT INTO `urzadzenia`( `uwiw`, `kategoria`, `sala`, `lpwsali`, `model`, `wyglad`, `procesor`, `ram`, `plyta`, `dysk`, `przekatna`, `mac`, `licencje`, `inne`)
+					VALUES ( '?', '?', '?', '?', '?', '?', '?', '?', '?', '?', '?', '?', '?', '?' )" );
+				$q -> bind_param( 'ssssssssssssss', $uwiw, $kat, $sala, $lpWSali, $model, $wyglad, $processor, $ram, $plyta, $dysk, $przekatna, $mac, $licencje, $inne );
+				$q -> execute();
 				break;
 			case 'PUT':
+				$id = $in[ 'id' ];
+				if( isSet( $id ) ){
+					$uwiw		= $in[ 'uwiw' ];			$kat	 = $in[ 'kat' ];
+					$sala		= $in[ 'sala' ];			$lpWSali = $in[ 'lpWSali' ];
+					$model		= $in[ 'model' ];			$wyglad	 = $in[ 'wyglad' ];
+					$processor	= $in[ 'processor' ];		$ram	 = $in[ 'ram' ];
+					$plyta		= $in[ 'plyta' ];			$dysk	 = $in[ 'dysk' ];
+					$przekatna	= $in[ 'przekatna' ];		$mac	 = $in[ 'mac' ];
+					$licencje	= $in[ 'licencje' ];		$inne	 = $in[ 'inne' ];
+					$q = $c -> prepare( "UPDATE `urzadzenia` SET `uwiw` = '?',`kategoria` = '?',`sala` = '?',`lpwsali` = '?',`model` = '?',`wyglad` = '?',`procesor` = '?',`ram` = '?',`plyta` = '?'
+						`dysk` = '?', `przekatna` = '?',`mac` = '?',`licencje` = '?',`inne` = '?' where id=?" );
+					$q -> bind_param( 'ssssssssssssssi', $uwiw, $kat, $sala, $lpWSali, $model, $wyglad, $processor, $ram, $plyta, $dysk, $przekatna, $mac, $licencje, $inne, $id );
+					$q -> execute();
+				}
+				else http_response_code( 418 );
+				break;
 			case `DELETE`:
+				$id = $in[ 'id' ];
+				if( isSet( $id ) ){
+					$q = $c -> prepare( "DELETE FROM `urzadzenia` WHERE id = '?'" );
+					$q -> bind_param( "i", $id );
+					$q -> execute();
+				}
+				else http_response_code( 418 );
+				break;
 			default:
+				http_response_code( 200 );
 				break;
 		}
 	}
