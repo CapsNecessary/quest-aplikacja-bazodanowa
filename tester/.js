@@ -12,34 +12,34 @@ function _init(){
 }
 
 function callAPI(){
-	const method = document.getElementById( "method" );
-	const args = document.getElementById( "args" );
+	const method = document.getElementById( "method" ).value;
+	const args = document.getElementById( "args" ).value;
 	const output = document.getElementById( "output" );
 	const message = document.getElementById( "message" );
-	console.log( args.value )
+	console.log( args )
 	try{
-		JSON.parse( args.value );
+		json = JSON.parse( args );
 		if( method == "GET" ){
 			// to do: make append
 			let append;
 			fetch(
 				`https://localhost/database%20app/api/api.php${ append }`,
-				{ method: method }
+				{ method: `${ method }` }
 			).then( e => {
 				if( !e.ok ) console.log( e.status );
-				e.text().then( output.value );
+				e.text().then( output.innerHTML );
 			})
 		}
 		else{	
 			fetch(
 				`https://localhost/database%20app/api/api.php`,
 				{
-					method: method,
-					body: args.value
+					method: `${ method }`,
+					body: json
 				}
 			).then( e => {
 				if( !e.ok ) console.log( e.status );
-				e.text().then( output.value );
+				e.text().then( output.innerHTML );
 			})
 		}
 	}
