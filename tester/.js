@@ -19,6 +19,7 @@ function callAPI(){
 	console.log( args )
 	try{
 		json = JSON.parse( args );
+		console.log( json )
 		if( method == "GET" ){
 			// to do: make append
 			let append;

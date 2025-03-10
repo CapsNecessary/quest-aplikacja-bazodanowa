@@ -4,6 +4,7 @@
 		header("Content-Type: application/json");
 		$m = $_SERVER['REQUEST_METHOD'];
 		$in = json_decode( file_get_contents('php://input'), true );
+		// var_dump( $in );
 		switch ( $m ){
 			case 'GET':
 				// Exit if no table is selected
