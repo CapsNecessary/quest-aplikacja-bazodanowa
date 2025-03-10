@@ -6,7 +6,9 @@
 		$in = json_decode( file_get_contents('php://input'), true );
 		switch ( $m ){
 			case 'GET':
-				switch( $_GET['table'] ) {
+				// Exit if no table is selected
+				if( !isSet( $_GET[ 'table' ] ) ) break;
+				switch( $_GET[ 'table' ] ) {
 					case 'urzadzenia':
 						printTableAsJson( 'urzadzenia' );
 						break;
