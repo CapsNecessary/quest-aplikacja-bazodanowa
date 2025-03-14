@@ -4,7 +4,7 @@
 		header("Content-Type: application/json");
 		$m = $_SERVER['REQUEST_METHOD'];
 		$in = json_decode( file_get_contents('php://input'), true );
-		// var_dump( $in );
+		// print( json_encode( $in ) );
 		switch ( $m ){
 			case 'GET':
 				// Exit if no table is selected
@@ -51,6 +51,7 @@
 						`dysk` = '?', `przekatna` = '?',`mac` = '?',`licencje` = '?',`inne` = '?' where id=?" );
 					$q -> bind_param( 'ssssssssssssssi', $uwiw, $kat, $sala, $lpWSali, $model, $wyglad, $processor, $ram, $plyta, $dysk, $przekatna, $mac, $licencje, $inne, $id );
 					$q -> execute();
+					print( json_encode( "{`id`:$id }" ) );
 				}
 				else http_response_code( 418 );
 				break;
@@ -60,10 +61,12 @@
 					$q = $c -> prepare( "DELETE FROM `urzadzenia` WHERE id = '?'" );
 					$q -> bind_param( "i", $id );
 					$q -> execute();
+					print( json_encode( "{`id`:$id }" ) );
 				}
 				else http_response_code( 418 );
 				break;
 			default:
+				print( json_encode( "{ 'method': '$m' }" ) );
 				http_response_code( 200 );
 				break;
 		}

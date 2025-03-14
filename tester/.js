@@ -12,6 +12,7 @@ function _init(){
 }
 
 function callAPI(){
+	console.log( 1 );
 	const method = document.getElementById( "method" ).value;
 	const args = document.getElementById( "args" ).value;
 	const output = document.getElementById( "output" );
@@ -21,26 +22,35 @@ function callAPI(){
 		json = JSON.parse( args );
 		console.log( json )
 		if( method == "GET" ){
-			// to do: make append
-			let append;
+			// hopefully json only has a values of string
+			const keys = Object.keys( json );
+			let append = `?${ keys[ 0 ] }=${ json[ keys[ 0 ] ] }`;
+			for( let i=1; i<keys.length; i++ ) append += `&${ keys[ i ] }=${ json[ keys[ i ] ] }`
 			fetch(
 				`https://localhost/database%20app/api/api.php${ append }`,
 				{ method: `${ method }` }
 			).then( e => {
 				if( !e.ok ) console.log( e.status );
-				e.text().then( output.innerHTML );
+				e.text().then( content => {
+					output.innerHTML = content;
+					console.log( content );
+				});
 			})
 		}
-		else{	
+		else{
+			console.log( args, method, json );
 			fetch(
 				`https://localhost/database%20app/api/api.php`,
 				{
 					method: `${ method }`,
-					body: json
+					body: `${ args }`
 				}
 			).then( e => {
 				if( !e.ok ) console.log( e.status );
-				e.text().then( output.innerHTML );
+				e.text().then( content => {
+					output.innerHTML = content;
+					console.log( content );
+				});
 			})
 		}
 	}
