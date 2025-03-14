@@ -33,7 +33,7 @@ function callAPI(){
 				if( !e.ok ) console.log( e.status );
 				e.text().then( content => {
 					output.innerHTML = content;
-					console.log( content );
+					console.log( content, '\n', JSON.parse( content ) );
 				});
 			})
 		}
@@ -49,7 +49,7 @@ function callAPI(){
 				if( !e.ok ) console.log( e.status );
 				e.text().then( content => {
 					output.innerHTML = content;
-					console.log( content );
+					console.log( content, '\n', JSON.parse( content ) );
 				});
 			})
 		}
@@ -58,4 +58,5 @@ function callAPI(){
 		console.error( err );
 		message.innerHTML = err;
 	}
+	if( document.getElementById( "repeat" ).checked ) setTimeout( () => { callAPI() } );
 }
