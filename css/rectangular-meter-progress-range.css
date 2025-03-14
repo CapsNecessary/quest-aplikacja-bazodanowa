@@ -1,0 +1,61 @@
+meter, progress, input[type=range] {
+	--_optimum: var(--positive, green);
+	--_sub-optimum: var(--warning, yellow);
+	--_sub-sub-optimum: var(--error, red);
+	--_background: var(--background, transparent);
+	--_accent: var(--text, black);
+	--_input-range-slider-width: 5px;
+	appearance: none;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	border: 1px solid var(--_accent);
+	background: var(--_background);
+	display: inline-block;
+	color: var(--_background);
+	min-height: 1em;
+}
+
+input[type=range]{
+	appearance: none;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+}
+
+/* Meter styling for Chrome */
+meter::-webkit-meter-bar {background: var(--_background);}
+meter::-webkit-meter-optimum-value {background: var(--_optimum);}
+meter::-webkit-meter-suboptimum-value {background: var(--_sub-optimum);}
+meter::-webkit-meter-even-less-good-value {background: var(--_sub-sub-optimum);}
+
+/* Meter styling for Firefox */
+meter:-moz-meter-optimum::-moz-meter-bar {background: var(--_optimum);}
+meter:-moz-meter-sub-optimum::-moz-meter-bar {background: var(--_sub-optimum);}
+meter:-moz-meter-sub-sub-optimum::-moz-meter-bar {background: var(--_sub-sub-optimum);}
+
+/* Progress styling for Chrome */
+progress::-webkit-progress-value {background: var(--_accent);}
+progress::-webkit-progress-bar {background: var(--_background);}
+
+/* Progress styling for Firefox */
+progress::-moz-progress-bar {background: var(--_accent);}
+
+/* Input[type=range] styling for Chrome */
+input[type=range]::-webkit-slider-thumb{
+	border: 1px solid var(--_accent);
+	height: 100%; width: var(--_input-range-slider-width);
+	border-radius: 0;
+	-webkit-appearance: none;
+}
+input[type=range]::-webkit-slider-runnable-track{
+	height: 100%;
+	border: 1px solid var(--_accent);
+}
+
+/* Input[type=range] styling for Firefox */
+input[type=range]::-moz-range-thumb{
+	border: 1px solid var(--_accent);
+	height: 100%; width: var(--_input-range-slider-width);
+	border-radius: 0;
+	background: transparent;
+}
+input[type=range]::-moz-range-track{height: 100%;}
