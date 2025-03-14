@@ -12,7 +12,7 @@ function _init(){
 }
 
 function callAPI(){
-	console.log( 1 );
+	console.log( document.getElementById( "timeout" ).value, performance.now() );
 	const method = document.getElementById( "method" ).value;
 	const args = document.getElementById( "args" ).value;
 	const output = document.getElementById( "output" );
@@ -33,7 +33,11 @@ function callAPI(){
 				if( !e.ok ) console.log( e.status );
 				e.text().then( content => {
 					output.innerHTML = content;
-					console.log( content, '\n', JSON.parse( content ) );
+					try{ console.log( content, '\n', JSON.parse( content ) ); }
+					catch( err ){
+						console.error( err );
+						message.innerHTML = err;
+					}
 				});
 			})
 		}
@@ -49,7 +53,11 @@ function callAPI(){
 				if( !e.ok ) console.log( e.status );
 				e.text().then( content => {
 					output.innerHTML = content;
-					console.log( content, '\n', JSON.parse( content ) );
+					try{ console.log( content, '\n', JSON.parse( content ) ); }
+					catch( err ){
+						console.error( err );
+						message.innerHTML = err;
+					}
 				});
 			})
 		}
@@ -58,5 +66,5 @@ function callAPI(){
 		console.error( err );
 		message.innerHTML = err;
 	}
-	if( document.getElementById( "repeat" ).checked ) setTimeout( () => { callAPI() } );
+	if( document.getElementById( "repeat" ).checked ) setTimeout( () => { callAPI() }, document.getElementById( "timeout" ).value );
 }

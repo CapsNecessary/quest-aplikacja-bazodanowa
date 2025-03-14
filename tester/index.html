@@ -4,6 +4,7 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>API test</title>
+	<link rel="stylesheet" href=".css">
 	<script src=".js"></script>
 </head>
 <body>
@@ -16,7 +17,8 @@
 			<option value="DELETE"></option>
 		</datalist>
 		<label> Repeat: <input type="checkbox" id="repeat"></label><br/>
-		<label> Time between repeats [ms] <input type="number" id="timeout" min="1"></label><br/>
+		<label> Time between requests [ms] <input type="number" id="timeout" min="1"></label><br/>
+		<meter id="timeTillNextRequest"></meter>
 		<label> Args: <br/>
 			<textarea id="args"></textarea>
 		</label> <br/>
