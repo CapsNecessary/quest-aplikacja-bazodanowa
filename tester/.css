@@ -12,3 +12,5 @@ textarea{
 	color: var( --text );
 	font-weight: bold;
 }
+
+#timeTillNextRequest{ width: 100%; }

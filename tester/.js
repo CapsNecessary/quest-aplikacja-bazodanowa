@@ -12,7 +12,8 @@ function _init(){
 }
 
 function callAPI(){
-	console.log( document.getElementById( "timeout" ).value, performance.now() );
+	const timeout = document.getElementById( "timeout" ).value;
+	console.log( timeout, performance.now() );
 	const method = document.getElementById( "method" ).value;
 	const args = document.getElementById( "args" ).value;
 	const output = document.getElementById( "output" );
@@ -66,5 +67,11 @@ function callAPI(){
 		console.error( err );
 		message.innerHTML = err;
 	}
-	if( document.getElementById( "repeat" ).checked ) setTimeout( () => { callAPI() }, document.getElementById( "timeout" ).value );
+	if( document.getElementById( "repeat" ).checked ) setTimeout( () => { callAPI(); animationTillNextRequest( timeout ) }, timeout );
+}
+
+function animationTillNextRequest( t, v=t ){
+	console.log(1);
+	document.getElementById( "timeTillNextRequest" ).value = v/t;
+	if( t > 0 ) setTimeout( animationTillNextRequest( t, v-1 ), 1 );
 }
