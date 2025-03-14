@@ -67,11 +67,26 @@ function callAPI(){
 		console.error( err );
 		message.innerHTML = err;
 	}
-	if( document.getElementById( "repeat" ).checked ) setTimeout( () => { callAPI(); animationTillNextRequest( timeout ) }, timeout );
+	// change this to an interval
+	if( document.getElementById( "repeat" ).checked ){
+		animationTillNextRequest( timeout );
+		setTimeout( () => { callAPI() }, timeout );
+	}
 }
 
-function animationTillNextRequest( t, v=t ){
+function animationTillNextRequest( t ){
 	console.log(1);
-	document.getElementById( "timeTillNextRequest" ).value = v/t;
-	if( t > 0 ) setTimeout( animationTillNextRequest( t, v-1 ), 1 );
+	var v = t, t = t;
+	var interval = null;
+	var start = performance.now(), end;
+	clearInterval( interval );
+	interval = setInterval( frame, 1 );
+	
+	function frame(){
+		end = performance.now()
+		document.getElementById( "timeTillNextRequest" ).value = v/t;
+		v -= end -start;
+		start = end;
+		if( v <= 0 ) clearInterval( interval );
+	}
 }
