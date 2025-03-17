@@ -34,8 +34,7 @@ function callAPI(){
 				if( !e.ok ) console.log( e.status );
 				e.text().then( content => {
 					output.innerHTML = content;
-					let json;
-					if( json = returnAsJson( content ) != false ){ console.log( content, '\n', json ); }
+					console.log( content, '\n', returnAsJson( content ) );
 				});
 			})
 		}
@@ -51,8 +50,7 @@ function callAPI(){
 				if( !e.ok ) console.log( e.status );
 				e.text().then( content => {
 					output.innerHTML = content;
-					let json;
-					if( json = returnAsJson( content ) != false ){ console.log( content, '\n', json ); }
+					console.log( content, '\n', returnAsJson( content ) );
 				});
 			})
 		}
