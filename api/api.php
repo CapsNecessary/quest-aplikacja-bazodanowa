@@ -37,7 +37,7 @@
 				$licencje	= $in[ 'licencje' ]	 ?? '""';		$inne	 = $in[ 'inne' ]	?? '""';
 				$q = $c -> prepare( "INSERT INTO `urzadzenia`( `uwiw`, `kategoria`, `sala`, `lpwsali`, `model`, `wyglad`, `procesor`, `ram`, `plyta`, `dysk`, `przekatna`, `mac`, `licencje`, `inne`)
 					VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ? )" );
-				$q -> bind_param( 'ssssssssssssss', $uwiw, $kat, $sala, $lpWSali, $model, $wyglad, $processor, $ram, $plyta, $dysk, $przekatna, $mac, $licencje, $inne );
+				$q -> bind_param( 'ssssssssssssssss', $uwiw, $kat, $sala, $lpWSali, $model, $wyglad, $processor, $ram, $plyta, $dysk, $przekatna, $mac, $licencje, $inne );
 				$q -> execute();
 				break;
 			case 'PUT':
@@ -53,7 +53,7 @@
 					// print( json_encode( "{`id`:$id, `uwiw`:$uwiw, `kat`:$kat, `sala`:$sala, `lpWSali`:$lpWSali, `model`:$model, `wyglad`:$wyglad, `processor`:$processor, `ram`:$ram, `plyta`:$plyta, `dysk`:$dysk, `przekatna`:$przekatna, `mac`:$mac, `licencje`:$licencje, `inne`:$inne }" ) );
 					$q = $c -> prepare( "UPDATE `urzadzenia` SET `uwiw` = ?,`kategoria` = ?,`sala` = ?,`lpwsali` = ?,`model` = ?,`wyglad` = ?,`procesor` = ?,`ram` = ?,`plyta` = ?
 						`dysk` = ?, `przekatna` = ?,`mac` = ?,`licencje` = ?,`inne` = ? where id=?" );
-					$q -> bind_param( 'ssssssssssssssi', $uwiw, $kat, $sala, $lpWSali, $model, $wyglad, $processor, $ram, $plyta, $dysk, $przekatna, $mac, $licencje, $inne, $id );
+					$q -> bind_param( 'ssssssssssssssssi', $uwiw, $kat, $sala, $lpWSali, $model, $wyglad, $processor, $ram, $plyta, $dysk, $przekatna, $mac, $licencje, $inne, $id );
 					$q -> execute();
 				}
 				else http_response_code( 418 );
