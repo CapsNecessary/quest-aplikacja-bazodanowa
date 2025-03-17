@@ -9,24 +9,22 @@
 	<script src=".js"></script>
 </head>
 <body>
-	<form>
-		<label> Method <input type="text" id="method" list="methods"></label><br/>
-		<datalist id="methods">
-			<option value="GET"></option>
-			<option value="POST"></option>
-			<option value="PUT"></option>
-			<option value="DELETE"></option>
-		</datalist>
-		<label> Repeat: <input type="checkbox" id="repeat"></label><br/>
-		<label> Time between requests [ms] <input type="number" id="timeout" min="1"></label><br/>
-		Estimated time till next request: <br/>
-		<meter id="timeTillNextRequest" min="0" max="1"></meter><br/>
-		<label> Args: <br/>
-			<textarea id="args"></textarea>
-		</label> <br/>
-		Output: <br/><output> <textarea id="output" readonly></textarea></output><br/>
-		<button type="submit">Submit</button>
-	</form>
+	<label> Method <input type="text" id="method" list="methods"></label><br/>
+	<datalist id="methods">
+		<option value="GET"></option>
+		<option value="POST"></option>
+		<option value="PUT"></option>
+		<option value="DELETE"></option>
+	</datalist>
+	<label> Repeat: <input type="checkbox" id="repeat"></label><br/>
+	<label> Time between requests [ms] <input type="number" id="timeout" min="1"></label><br/>
+	Estimated time till next request: <br/>
+	<meter id="timeTillNextRequest" min="0" max="1"></meter><br/>
+	<label> Args: <br/>
+		<textarea id="args" rows="5"></textarea>
+	</label> <br/>
+	Output: <br/><output> <textarea id="output" rows="20" readonly></textarea></output><br/>
+	<button onclick="callAPI()">Submit</button>
 	<button onclick="clearOutput()">Clear Output</button>
 	<p id="message"></p>
 </body>
