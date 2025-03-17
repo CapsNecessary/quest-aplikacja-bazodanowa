@@ -1,4 +1,4 @@
-let form;
+let form, message;
 
 addEventListener( "DOMContentLoaded", _init );
 
@@ -17,7 +17,7 @@ function callAPI(){
 	const method = document.getElementById( "method" ).value;
 	const args = document.getElementById( "args" ).value;
 	const output = document.getElementById( "output" );
-	const message = document.getElementById( "message" );
+	message = document.getElementById( "message" );
 	console.log( args )
 	let json;
 	if( json = returnAsJson( args ) != false ){
@@ -33,7 +33,7 @@ function callAPI(){
 			).then( e => {
 				if( !e.ok ) console.log( e.status );
 				e.text().then( content => {
-					output.innerHTML = content;
+					output.value = content;
 					console.log( content, '\n', returnAsJson( content ) );
 				});
 			})
@@ -49,7 +49,7 @@ function callAPI(){
 			).then( e => {
 				if( !e.ok ) console.log( e.status );
 				e.text().then( content => {
-					output.innerHTML = content;
+					output.value = content;
 					console.log( content, '\n', returnAsJson( content ) );
 				});
 			})
