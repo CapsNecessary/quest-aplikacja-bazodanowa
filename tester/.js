@@ -20,8 +20,7 @@ function callAPI(){
 	const message = document.getElementById( "message" );
 	console.log( args )
 	let json;
-	if( json = JSON.parse( args ) != false ){
-		json = JSON.parse( args );
+	if( json = returnAsJson( args ) != false ){
 		console.log( json )
 		if( method == "GET" ){
 			// hopefully json only has a values of string
