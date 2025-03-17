@@ -19,8 +19,8 @@ function callAPI(){
 	const output = document.getElementById( "output" );
 	const message = document.getElementById( "message" );
 	console.log( args )
-	try{
-		json = JSON.parse( args );
+	let json;
+	if( json = JSON.parse( args ) != false ){
 		console.log( json )
 		if( method == "GET" ){
 			// hopefully json only has a values of string
@@ -63,10 +63,6 @@ function callAPI(){
 			})
 		}
 	}
-	catch(err){
-		console.error( err );
-		message.innerHTML = err;
-	}
 	if( document.getElementById( "repeat" ).checked ) setTimeout( () => { callAPI(); animationTillNextRequest( timeout ) }, timeout );
 }
 
@@ -74,4 +70,13 @@ function animationTillNextRequest( t, v=t ){
 	console.log(1);
 	document.getElementById( "timeTillNextRequest" ).value = v/t;
 	if( t > 0 ) setTimeout( animationTillNextRequest( t, v-1 ), 1 );
+}
+
+function returnAsJson( json ){
+	try{ return JSON.parse( json ); }
+	catch( err ){
+		console.error( err );
+		message.innerHTML = err;
+		return false;
+	}
 }
