@@ -1,9 +1,11 @@
-let form, message;
+let form, message, output;
 
 addEventListener( "DOMContentLoaded", _init );
 
 function _init(){
 	form = document.querySelectorAll( "form" )[0];
+	output = document.getElementById( "output" );
+	message = document.getElementById( "message" );
 	
 	addEventListener( 'submit', e => {
 		e.preventDefault();
@@ -16,8 +18,6 @@ function callAPI(){
 	console.log( timeout, performance.now() );
 	const method = document.getElementById( "method" ).value;
 	const args = document.getElementById( "args" ).value;
-	const output = document.getElementById( "output" );
-	message = document.getElementById( "message" );
 	console.log( args )
 	let json;
 	if( json = returnAsJson( args ) != false ){
@@ -86,3 +86,5 @@ function returnAsJson( json ){
 		return false;
 	}
 }
+
+function clearOutput(){ output.value == "" }
