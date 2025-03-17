@@ -34,11 +34,8 @@ function callAPI(){
 				if( !e.ok ) console.log( e.status );
 				e.text().then( content => {
 					output.innerHTML = content;
-					try{ console.log( content, '\n', JSON.parse( content ) ); }
-					catch( err ){
-						console.error( err );
-						message.innerHTML = err;
-					}
+					let json;
+					if( json = returnAsJson( content ) != false ){ console.log( content, '\n', json ); }
 				});
 			})
 		}
@@ -54,11 +51,8 @@ function callAPI(){
 				if( !e.ok ) console.log( e.status );
 				e.text().then( content => {
 					output.innerHTML = content;
-					try{ console.log( content, '\n', JSON.parse( content ) ); }
-					catch( err ){
-						console.error( err );
-						message.innerHTML = err;
-					}
+					let json;
+					if( json = returnAsJson( content ) != false ){ console.log( content, '\n', json ); }
 				});
 			})
 		}

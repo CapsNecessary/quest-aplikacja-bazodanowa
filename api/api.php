@@ -50,7 +50,7 @@
 					$plyta		= $in[ 'plyta' ]	 ?? '""';		$dysk	 = $in[ 'dysk' ]	?? '""';
 					$przekatna	= $in[ 'przekatna' ] ?? '""';		$mac	 = $in[ 'mac' ]		?? '""';
 					$licencje	= $in[ 'licencje' ]	 ?? '""';		$inne	 = $in[ 'inne' ]	?? '""';
-					print( json_encode( "{`id`:$id, `uwiw`:$uwiw, `kat`:$kat, `sala`:$sala, `lpWSali`:$lpWSali, `model`:$model, `wyglad`:$wyglad, `processor`:$processor, `ram`:$ram, `plyta`:$plyta, `dysk`:$dysk, `przekatna`:$przekatna, `mac`:$mac, `licencje`:$licencje, `inne`:$inne }" ) );
+					// print( json_encode( "{`id`:$id, `uwiw`:$uwiw, `kat`:$kat, `sala`:$sala, `lpWSali`:$lpWSali, `model`:$model, `wyglad`:$wyglad, `processor`:$processor, `ram`:$ram, `plyta`:$plyta, `dysk`:$dysk, `przekatna`:$przekatna, `mac`:$mac, `licencje`:$licencje, `inne`:$inne }" ) );
 					$q = $c -> prepare( "UPDATE `urzadzenia` SET `uwiw` = ?,`kategoria` = ?,`sala` = ?,`lpwsali` = ?,`model` = ?,`wyglad` = ?,`procesor` = ?,`ram` = ?,`plyta` = ?
 						`dysk` = ?, `przekatna` = ?,`mac` = ?,`licencje` = ?,`inne` = ? where id=?" );
 					$q -> bind_param( 'ssssssssssssssi', $uwiw, $kat, $sala, $lpWSali, $model, $wyglad, $processor, $ram, $plyta, $dysk, $przekatna, $mac, $licencje, $inne, $id );
