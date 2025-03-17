@@ -19,7 +19,8 @@ function callAPI(){
 	const output = document.getElementById( "output" );
 	const message = document.getElementById( "message" );
 	console.log( args )
-	try{
+	let json;
+	if( json = JSON.parse( args ) != false ){
 		json = JSON.parse( args );
 		console.log( json )
 		if( method == "GET" ){
@@ -63,10 +64,6 @@ function callAPI(){
 			})
 		}
 	}
-	catch(err){
-		console.error( err );
-		message.innerHTML = err;
-	}
 	if( document.getElementById( "repeat" ).checked ){
 		animationTillNextRequest( timeout );
 		setTimeout( () => { callAPI() }, timeout );
@@ -87,5 +84,14 @@ function animationTillNextRequest( t ){
 		v -= end -start;
 		start = end;
 		if( v <= 0 ) clearInterval( interval );
+	}
+}
+
+function returnAsJson( json ){
+	try{ return JSON.parse( json ); }
+	catch( err ){
+		console.error( err );
+		message.innerHTML = err;
+		return false;
 	}
 }
