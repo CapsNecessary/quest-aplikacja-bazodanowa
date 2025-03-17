@@ -15,13 +15,11 @@ function _init(){
 
 function callAPI(){
 	const timeout = document.getElementById( "timeout" ).value;
-	console.log( timeout, performance.now() );
 	const method = document.getElementById( "method" ).value;
 	const args = document.getElementById( "args" ).value;
-	console.log( args )
 	let json;
-	if( json = returnAsJson( args ) != false ){
-		console.log( json )
+	if( ( json = returnAsJson( args ) ) != false ){
+		console.log( args, method, json );
 		if( method == "GET" ){
 			// hopefully json only has a values of string
 			const keys = Object.keys( json );
@@ -39,7 +37,6 @@ function callAPI(){
 			})
 		}
 		else{
-			console.log( args, method, json );
 			fetch(
 				`https://localhost/database%20app/api/api.php`,
 				{
@@ -62,7 +59,6 @@ function callAPI(){
 }
 
 function animationTillNextRequest( t ){
-	console.log(1);
 	var v = t, t = t;
 	var interval = null;
 	var start = performance.now(), end;
@@ -81,7 +77,7 @@ function animationTillNextRequest( t ){
 function returnAsJson( json ){
 	try{ return JSON.parse( json ); }
 	catch( err ){
-		console.error( err );
+		console.log( "%c"+err, "color: orange" );
 		message.innerHTML = err;
 		return false;
 	}
