@@ -8,8 +8,8 @@ function _init(){
 	message = document.getElementById( "message" );
 }
 
-function callAPI(){
-	if( idOfTimeout != null ){
+function callAPI( id ){
+	if( idOfTimeout != null && idOfTimeout != id ){
 		let m="Request denied because 1 is already pending";
 		console.log( "%c"+m, "color: orange" );
 		message.innerHTML = m;
@@ -55,7 +55,7 @@ function callAPI(){
 	}
 	if( document.getElementById( "repeat" ).checked ){
 		if( idOfInterval == null ) animationTillNextRequest( timeout );
-		if( idOfTimeout == null ) idOfTimeout = setTimeout( () => { callAPI() }, timeout );
+		if( idOfTimeout == null || idOfTimeout == id ) idOfTimeout = setTimeout( () => { callAPI( idOfTimeout ) }, timeout );
 	}
 }
 
