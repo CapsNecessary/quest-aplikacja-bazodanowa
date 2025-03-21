@@ -17,7 +17,7 @@
 		<option value="PUT"></option>
 		<option value="DELETE"></option>
 	</datalist>
-	<label> Repeat: <input type="checkbox" id="repeat"></label><br/>
+	<label> Repeat: <input type="checkbox" id="repeat" onchange="repeatRequest( this )"></label><br/>
 	<label> Time between requests [ms] <input type="number" id="timeout" min="1"></label><br/>
 	Estimated time till next request: <br/>
 	<meter id="timeTillNextRequest" min="0" max="1"></meter><br/>

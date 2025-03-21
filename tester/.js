@@ -1,4 +1,4 @@
-let form, message, output;
+let form, message, output, idOfTimeout, idOfInterval;
 
 addEventListener( "DOMContentLoaded", _init );
 
@@ -6,11 +6,6 @@ function _init(){
 	form = document.querySelectorAll( "form" )[0];
 	output = document.getElementById( "output" );
 	message = document.getElementById( "message" );
-	
-	addEventListener( 'submit', e => {
-		e.preventDefault();
-		callAPI();
-	} )
 }
 
 function callAPI(){
@@ -54,23 +49,22 @@ function callAPI(){
 	}
 	if( document.getElementById( "repeat" ).checked ){
 		animationTillNextRequest( timeout );
-		setTimeout( () => { callAPI() }, timeout );
+		idOfTimeout = setTimeout( () => { callAPI() }, timeout );
 	}
 }
 
 function animationTillNextRequest( t ){
 	var v = t, t = t;
-	var interval = null;
 	var start = performance.now(), end;
-	clearInterval( interval );
-	interval = setInterval( frame, 1 );
+	clearInterval( idOfInterval );
+	idOfInterval = setInterval( frame, 1 );
 	
 	function frame(){
 		end = performance.now()
 		document.getElementById( "timeTillNextRequest" ).value = v/t;
 		v -= end -start;
 		start = end;
-		if( v <= 0 ) clearInterval( interval );
+		if( v <= 0 ) clearInterval( idOfInterval );
 	}
 }
 
@@ -84,3 +78,11 @@ function returnAsJson( json ){
 }
 
 function clearOutput(){ output.value == "" }
+
+function repeatRequest( e ){
+	if( e.checked == false ){
+		clearTimeout( idOfTimeout );
+		clearInterval( idOfInterval );
+		document.getElementById( "timeTillNextRequest" ).value = 0
+	}
+}
