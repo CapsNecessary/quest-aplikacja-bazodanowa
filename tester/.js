@@ -9,6 +9,12 @@ function _init(){
 }
 
 function callAPI(){
+	if( idOfTimeout != null ){
+		let m="Request denied because 1 is already pending";
+		console.log( "%c"+m, "color: orange" );
+		message.innerHTML = m;
+		return;
+	}
 	const timeout = document.getElementById( "timeout" ).value;
 	const method = document.getElementById( "method" ).value;
 	const args = document.getElementById( "args" ).value;
@@ -48,8 +54,8 @@ function callAPI(){
 		}
 	}
 	if( document.getElementById( "repeat" ).checked ){
-		animationTillNextRequest( timeout );
-		idOfTimeout = setTimeout( () => { callAPI() }, timeout );
+		if( idOfInterval == null ) animationTillNextRequest( timeout );
+		if( idOfTimeout == null ) idOfTimeout = setTimeout( () => { callAPI() }, timeout );
 	}
 }
 
@@ -82,7 +88,9 @@ function clearOutput(){ output.value == "" }
 function repeatRequest( e ){
 	if( e.checked == false ){
 		clearTimeout( idOfTimeout );
+		idOfTimeout = null;
 		clearInterval( idOfInterval );
+		idOfInterval = null;
 		document.getElementById( "timeTillNextRequest" ).value = 0
 	}
 }
