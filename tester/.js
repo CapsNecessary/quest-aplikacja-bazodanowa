@@ -70,7 +70,10 @@ function animationTillNextRequest( t ){
 		document.getElementById( "timeTillNextRequest" ).value = v/t;
 		v -= end -start;
 		start = end;
-		if( v <= 0 ) clearInterval( idOfInterval );
+		if( v <= 0 ){
+			clearInterval( idOfInterval );
+			idOfInterval = null
+		}
 	}
 }
 
