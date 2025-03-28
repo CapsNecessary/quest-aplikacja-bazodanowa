@@ -8,13 +8,11 @@ function App() {
 
 	return (
 		<>
-				<body>
-						<div className="app-container">
-								<div className="motto">{motto}</div>
-								<Tabela />
-								<div className="copyright">{copyright}</div>
-						</div>
-				</body>
+			<div className="app-container">
+					<div className="motto">{motto}</div>
+					<Tabela />
+					<div className="copyright">{copyright}</div>
+			</div>
 		</>
 	)
 }
