@@ -39,10 +39,10 @@ export const Tabela = () => {
 												<div className="obudowa">{device.obudowa}</div>
 												<div className="data-zakupu">{device.data_zakupu}</div>
 												<div className="status">{device.status_}</div>
-												<a href={`#operacja=edit&id=${device.id}`} className="button">Edytuj</a>
-												<a href={`#operacja=przen&id=${device.id}`} className="button">Przenieś</a>
-												<a href={`#operacja=del&id=${device.id}`} className="button">Kasacja</a>
-												<a href={`#operacja=hist&id=${device.id}`} className="button">Historia</a>
+												<div className="operacje"><a href={`#operacja=edit&id=${device.id}`} className="button">Edytuj</a></div>
+												<div className="operacje"><a href={`#operacja=przen&id=${device.id}`} className="button">Przenieś</a></div>
+												<div className="operacje"><a href={`#operacja=del&id=${device.id}`} className="button">Kasacja</a></div>
+												<div className="operacje"><a href={`#operacja=hist&id=${device.id}`} className="button">Historia</a></div>
 										</>
 								))}
 								<div className="szeroki-div-grida">Liczba pozycji: {initialDevices.length}</div>

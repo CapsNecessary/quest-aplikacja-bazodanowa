@@ -32,13 +32,13 @@ div.status { display: none; }
 	grid-gap: 1px;
 	background-color: var( --background );
 	padding: 1px;
-}
-
-.kontener-grida > div {
-	background-color: var( --background );
-	padding: 5px;
-	border: 1px solid var( --text );
-	margin: -.5px;
+	& > div{
+		background-color: var( --background );
+		padding: 5px;
+		border: 1px solid var( --text );
+		margin: -.5px;
+	}
+	.operacje{ padding: 0; }
 }
 
 /* dla komputerów */
@@ -67,9 +67,6 @@ div.status { display: none; }
 	text-align: center;
 	text-decoration: none;
 	display: inline-block;
-	--margin-inline: -.5px;
-	--margin-block: -.5px;
-	margin: var( --margin-block ) var( --margin-inline );
 	cursor: pointer;
 	border: var( --border-width ) solid var( --primary );
 }
