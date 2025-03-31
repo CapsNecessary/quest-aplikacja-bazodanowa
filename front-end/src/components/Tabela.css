@@ -6,9 +6,9 @@
 
 .kontener-filtry-boczne {
 	width: 250px;
-	/* background: rgba(255, 255, 255, 0.8);  */
+	background: var( --background ); 
 	padding: 5px; 
-	/* border: 1px solid #adadad; */
+	border-inline: 1px solid var( --text );
 }
 .kontener-grida { flex: 1; }
 
@@ -30,13 +30,15 @@ div.status { display: none; }
 .kontener-grida {
 	display: grid;
 	grid-gap: 1px;
-	/* background-color: #adadad; */
+	background-color: var( --background );
 	padding: 1px;
 }
 
 .kontener-grida > div {
-	/* background-color: rgba(255, 255, 255, 0.8); */
+	background-color: var( --background );
 	padding: 5px;
+	border: 1px solid var( --text );
+	margin: -.5px;
 }
 
 /* dla komputerów */
@@ -58,30 +60,33 @@ div.status { display: none; }
 }
 
 .button {
-	border: none;
-	padding: 3px 2px;
+	--border-width: 1px;
+	--padding: 2px;
+	width: calc( 100% - 2 *var( --border-width ) - 2 *var( --padding ) ); height: calc( 100% - 2 *var( --border-width ) - 2 *var( --padding ) );
+	padding: var( --padding );
 	text-align: center;
 	text-decoration: none;
 	display: inline-block;
-	margin: 1px 1px;
+	--margin-inline: -.5px;
+	--margin-block: -.5px;
+	margin: var( --margin-block ) var( --margin-inline );
 	cursor: pointer;
-	/* background-color: white; */
-	/* color: black; */
-	/* border: 1px solid #8b8b8b; */
+	border: var( --border-width ) solid var( --primary );
 }
 
 .filtr-button {
 	display: block;
+	outline-width: 2px;
 	width: 100%;
-	padding: 8px; 
+	padding: 8px;
 	margin: 2px 0;
-	/* border: 1px solid #adadad;  */
-	border-radius: 2px;
 	cursor: pointer;
 	transition: background 0.3s;
 	text-align: center;
+	background: var( --background ); color: var( --text );
+	border: 1px solid var( --text );
 }
 	
 .filtr-button:hover {
-	/* background: #ddd; */
+	background: var( --background-down ); color: var( --text-down );
 }
