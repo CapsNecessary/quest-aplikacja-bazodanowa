@@ -12,6 +12,7 @@
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 	
+	/* Theme Default */
 	--lightTheme-background-down: #ddd;
 	--darkTheme-background-down: #222;
 	--lightTheme-text-down: #222;
@@ -22,6 +23,22 @@
 	--darkTheme-primary-up: #9298ff;
 	--lightTheme-primary-down: #3741ff;
 	--darkTheme-primary-down: #3741ff;
+	
+	/* Theme 1 */
+	--theme-1-lightTheme-background: white;
+	--theme-1-darkTheme-background: #311;
+	--theme-1-lightTheme-text: #311;
+	--theme-1-darkTheme-text: white;
+	--theme-1-lightTheme-background-down: #ddd;
+	--theme-1-darkTheme-background-down: #222;
+	--theme-1-lightTheme-text-down: #222;
+	--theme-1-darkTheme-text-down: #ddd;
+	--theme-1-lightTheme-primary: #646cff;
+	--theme-1-darkTheme-primary: #646cff;
+	--theme-1-lightTheme-primary-up: #9298ff;
+	--theme-1-darkTheme-primary-up: #9298ff;
+	--theme-1-lightTheme-primary-down: #3741ff;
+	--theme-1-darkTheme-primary-down: #3741ff;
 	
 	--background-down: var( --lightTheme-background-down );
 	--text-down: var(--lightTheme-text-down);
@@ -36,6 +53,35 @@
 		--primary-up: var( --darkTheme-primary-up );
 		--primary-down: var( --darkTheme-primary-down );
 	}
+
+	.theme-1{
+		--background: var( --theme-1-darkTheme-background );
+		--background-down: var( --theme-1-darkTheme-background-down );
+		--text: var( --theme-1-darkTheme-text );
+		--text-down: var( --theme-1-darkTheme-text-down );
+		--primary: var( --theme-1-darkTheme-primary );
+		--primary-up: var( --theme-1-darkTheme-primary-up );
+		--primary-down: var( --theme-1-darkTheme-primary-down );
+	}
+}
+
+.theme, .theme.light-mode{
+	--background: var( --theme-1-lightTheme-background );
+	--background-down: var( --theme-1-lightTheme-background-down );
+	--text: var( --theme-1-lightTheme-text );
+	--text-down: var( --theme-1-lightTheme-text-down );
+	--primary: var( --theme-1-lightTheme-primary );
+	--primary-up: var( --theme-1-lightTheme-primary-up );
+	--primary-down: var( --theme-1-lightTheme-primary-down );
+}
+.theme.dark-mode{
+	--background: var( --theme-1-darkTheme-background );
+	--background-down: var( --theme-1-darkTheme-background-down );
+	--text: var( --theme-1-darkTheme-text );
+	--text-down: var( --theme-1-darkTheme-text-down );
+	--primary: var( --theme-1-darkTheme-primary );
+	--primary-up: var( --theme-1-darkTheme-primary-up );
+	--primary-down: var( --theme-1-darkTheme-primary-down );
 }
 
 .light-mode{
