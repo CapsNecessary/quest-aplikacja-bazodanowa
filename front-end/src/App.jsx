@@ -3,9 +3,7 @@ import './App.css'
 import { Tabela } from './components/Tabela'
 import { copyright, motto } from './components/Consts'
 
-function App() {
-	const [count, setCount] = useState(0)
-
+function App(){
 	return (
 		<>
 			<div className="motto">{motto}</div>
