@@ -12,6 +12,18 @@
 }
 .kontener-grida { flex: 1; }
 
+.wiersz {
+	display: grid;
+	grid-template-columns: subgrid;
+	grid-column: 1 / -1;
+	
+	& > div{
+		background-color: var( --background );
+		padding: 5px;
+		border: 1px solid var( --text );
+	}
+}
+
 /* dla telefonów i tabletów */
 div.status { display: none; }
 .kontener-grida { grid-template-columns: auto auto auto auto auto; }
@@ -32,12 +44,6 @@ div.status { display: none; }
 	grid-gap: 0;
 	background-color: var( --background );
 	padding: 1px;
-
-	& > div{
-		background-color: var( --background );
-		padding: 5px;
-		border: 1px solid var( --text );
-	}
 
 	.operacje{ padding: 0; }
 	.operacje:has( a ){ border: 0px transparent; }
