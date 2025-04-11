@@ -6,9 +6,9 @@ import { copyright, motto } from './components/Consts'
 function App(){
 	return (
 		<>
-			<div className="motto">{motto}</div>
+			<div className="motto">{ motto }</div>
 			<Tabela />
-			<div className="copyright">{copyright}</div>
+			<div className="copyright">{ copyright }</div>
 		</>
 	)
 }

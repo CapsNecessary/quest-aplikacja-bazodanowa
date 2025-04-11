@@ -111,12 +111,12 @@ img, picture, svg, video{
 	display: block;
 }
 
-hr{color: var(--text);}
+hr{ color: var( --text ); }
 
 dialog{
-	border: 1px solid var(--text);
-	background-color: var(--form-element-background);
-	color: var(--text);
+	border: 1px solid var( --text );
+	background-color: var( --form-element-background );
+	color: var( --text );
 }
 
 input[type=radio]{
@@ -125,33 +125,34 @@ input[type=radio]{
 	border-radius: 50%;
 }
 
-input[type=radio]:checked{background: var(--primary)}
+input[type=radio]:checked{ background: var( --primary ) }
 
 button, input, select, fieldset, textarea, meter, progress{
-	border: 1px solid var(--text);
+	border: 1px solid var( --text );
 	border-radius: 0;
 	margin:	1px;
-	background-color: var(--form-element-background);
+	background-color: var( --form-element-background );
 }
 
-button, select, input[type=button], input[type=checkbox], input[type=color], input[type^=date], input[type=file], input[type=radio], input[type=range], input[type=reset], input[type=submit], input[type=time], summary{
-	cursor: pointer;
-}
+button, select, input[type=button], input[type=checkbox], input[type=color], input[type^=date], input[type=file], input[type=radio], input[type=range],
+input[type=reset], input[type=submit], input[type=time], summary{ cursor: pointer; }
 
 ::selection{
-	color: var(--selection-background);
-	background-color: var(--selection-text);
+	color: var( --selection-background );
+	text-decoration: var( --selection-background );
+	background-color: var( --selection-text );
 }
 
 ::-moz-selection{
-	color: var(--selection-background);
-	background-color: var(--selection-text);
+	color: var( --selection-background );
+	text-decoration: var( --selection-background );
+	background-color: var( --selection-text );
 }
 
-::-webkit-scrollbar{background-color: var(--scrollbar-primary);}
-::-webkit-scrollbar-thumb{background-color: var(--scrollbar-secondary);}
+::-webkit-scrollbar{ background-color: var(--scrollbar-primary); }
+::-webkit-scrollbar-thumb{ background-color: var(--scrollbar-secondary); }
 
 @media (prefers-reduced-motion: no-preference){
-	body{scroll-behavior: smooth;}
-	:has{scroll-behavior: smooth;}
+	body{ scroll-behavior: smooth; }
+	:has{ scroll-behavior: smooth; }
 }
