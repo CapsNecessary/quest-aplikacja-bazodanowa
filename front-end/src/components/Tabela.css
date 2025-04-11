@@ -29,16 +29,18 @@ div.status { display: none; }
 /* dla wszystkich */
 .kontener-grida {
 	display: grid;
-	grid-gap: 1px;
+	grid-gap: 0;
 	background-color: var( --background );
 	padding: 1px;
+
 	& > div{
 		background-color: var( --background );
 		padding: 5px;
 		border: 1px solid var( --text );
-		margin: -.5px;
 	}
+
 	.operacje{ padding: 0; }
+	.operacje:has( a ){ border: 0px transparent; }
 }
 
 /* dla komputerów */
