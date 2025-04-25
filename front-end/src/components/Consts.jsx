@@ -1,19 +1,11 @@
-export const motto = 
-								<h2>„Porządek, porządek, <del>to wróg</del> przyjaciel zwierządek”
-								</h2>
-<<<<<<< Updated upstream
-=======
+export const motto = <h2>„Porządek, porządek, <del>to wróg</del> przyjaciel zwierządek”</h2>
 								
->>>>>>> Stashed changes
 export const copyright =
-								<>
-										<div> pk.zsz © 2025</div>
-										<div>Magazyny 4 ZSZ. Wersja 2.0 AMDG!</div>
-								</>
-<<<<<<< Updated upstream
-=======
-								
->>>>>>> Stashed changes
+	<>
+		<div> pk.zsz © 2025</div>
+		<div>Magazyny 4 ZSZ. Wersja 2.0 AMDG!</div>
+	</>
+
 export const initialDevices = [
 	{ id: 1, uwiw: 'uw/1234', sala: '123', lp_w_sali: '', kategoria: 'monitor', model: 'Iiyama sw-4356',
 		procesor: '', ram: '', plyta: '', dysk: '', przekatna: '39"', mac: '', licencje: '', inne: '',
@@ -76,10 +68,7 @@ export const initialDevices = [
 		obudowa: 'szary', data_zakupu:'2020-11-22', status_:'potwierdzony',
 	}
 ];
-<<<<<<< Updated upstream
-=======
 
->>>>>>> Stashed changes
 export const kategorie = [
 	"Wszystkie",
 	"Access Point",
@@ -109,4 +98,3 @@ export const uwiwOptions = [
 	{ value: "zzs", label: "ZZS - skasowane" },
 	{ value: "tani", label: "TANI - poza ewid." }
 ];
-
