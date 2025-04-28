@@ -46,6 +46,7 @@ div.status { display: none; }
 	padding: 1px;
 
 	.operacje{ padding: 0; }
+	.operacje4x{ padding: 5px; }
 	.operacje:has( a ){ border: 0px transparent; }
 }
 
