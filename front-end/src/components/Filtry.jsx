@@ -2,8 +2,7 @@ import { useState } from "react";
 import { kategorie, uwiwOptions } from "./Consts";
 
 export const filterDevices = ( devices, selectedCategory ) => {
-	const ret = devices.filter( device => { console.log( device.kategoria ); return selectedCategory === "Wszystkie" || device.kategoria === selectedCategory.toLowerCase() } );
-	console.log( devices, selectedCategory, ret )
+	const ret = devices.filter( device => { return selectedCategory === "Wszystkie" || device.kategoria === selectedCategory.toLowerCase() } );
 	return ret;
 };
 

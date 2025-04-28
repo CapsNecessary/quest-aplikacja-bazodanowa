@@ -34,8 +34,7 @@ export const Tabela = () => {
 					<div className="status">Status</div>
 					<div className="operacje operacje4x">Operacje</div>
 				</div>
-				{ devices = filterDevices( devices, selectedCategory ) }
-				{ devices.map( device => (
+				{ filterDevices( devices, selectedCategory ).map( device => (
 					<div className="wiersz" key={ device.id }>
 						<div className="uwiw">{ device.uwiw }</div>
 						<div className="sala">{ device.sala }</div>
