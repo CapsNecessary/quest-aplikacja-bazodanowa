@@ -49,7 +49,7 @@ export const Tabela = () => {
 						<div className="operacje"><a href={ `#operacja=hist&id=${ device.id }` } className="button">Historia</a></div>
 					</div>
 				))}
-				<div className="szeroki-div-grida">Liczba pozycji: { initialDevices.length}</div>
+				<div className="szeroki-div-grida">Liczba pozycji: { filterDevices( devices, selectedCategory ).length }</div>
 			</div>
 		</div>
 	);
