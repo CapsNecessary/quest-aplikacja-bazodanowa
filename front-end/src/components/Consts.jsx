@@ -1,5 +1,5 @@
 export const motto = <h2>„Porządek, porządek, <del>to wróg</del> przyjaciel zwierządek”</h2>;
-								
+
 export const copyright =
 	<>
 		<div> pk.zsz © 2025</div>
