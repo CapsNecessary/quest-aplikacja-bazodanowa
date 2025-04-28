@@ -2,12 +2,15 @@ import { initialDevices } from './Consts';
 import { PrzyciskiKategorii } from './PrzyciskiKategorii';
 import { Filtry, filterDevices } from './Filtry';
 import './Tabela.css'
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 export const Tabela = () => {
 	const [selectedCategory, setSelectedCategory] = useState("Wszystkie");
 	const [selectedUwiw, setSelectedUwiw] = useState("nastanie");
 	let devices = initialDevices;
+	
+	// useEffect( () => { fetchDatabase } );
+	
 	return (
 		<div className="tabela-container">
 			<div className='kontener-filtry-boczne'>
@@ -31,7 +34,7 @@ export const Tabela = () => {
 					<div className="status">Status</div>
 					<div className="operacje operacje4x">Operacje</div>
 				</div>
-				{/*devices = filterDevices(devices,selectedCategory)*/}
+				{ devices = filterDevices( devices, selectedCategory ) }
 				{ devices.map( device => (
 					<div className="wiersz" key={ device.id }>
 						<div className="uwiw">{ device.uwiw }</div>
@@ -51,8 +54,4 @@ export const Tabela = () => {
 			</div>
 		</div>
 	);
-}
-
-export const setSelectedCategory = () => {
-	
 }
