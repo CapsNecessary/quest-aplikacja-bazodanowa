@@ -78,8 +78,6 @@
 	function printTableAsJson( $t ){
 		global $c;
 		$q = $c -> query( "SELECT * FROM `$t`" );
-		$ret = array();
-		while( $r = $q -> fetch_row() ) array_push( $ret, json_encode( $r ) );
-		print( json_encode( $ret ) );
+		print( json_encode( $q -> fetch_all() ) );
 	}
 ?>

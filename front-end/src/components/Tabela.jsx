@@ -19,7 +19,10 @@ export const Tabela = () => {
 	const fetchUrzadzenia = async () => {
 		try{
 			const response = await axios.get( API_Get );
-			setUrzadzenia( response.data );
+			let res = response.data
+			for (let i = 0; i < res.length; i++) res[ i ] = res[ i ].replace( `["`, '' ).replace( /\"\]$/, '' ).split( '","' );
+			setUrzadzenia( res );
+			console.log( res );
 		} catch( error ){
 			console.error( 'Błąd podczas pobierania urzadzeń:', error );
 		}
