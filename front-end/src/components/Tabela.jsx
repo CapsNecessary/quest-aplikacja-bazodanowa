@@ -4,6 +4,9 @@ import { Filtry, filterDevices } from './Filtry';
 import './Tabela.css'
 import { useEffect, useState } from 'react';
 
+const API_Get = 'https://localhost/database%20app/api/api.php?table=urzadzenia';
+const API_Other = "https://localhost/database%20app/api/api.php";
+
 export const Tabela = () => {
 	const [selectedCategory, setSelectedCategory] = useState("Wszystkie");
 	const [selectedUwiw, setSelectedUwiw] = useState("nastanie");
