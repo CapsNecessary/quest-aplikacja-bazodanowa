@@ -2,17 +2,28 @@ import { initialDevices } from './Consts';
 import { PrzyciskiKategorii } from './PrzyciskiKategorii';
 import { Filtry, filterDevices } from './Filtry';
 import './Tabela.css'
+import axios from "axios";
 import { useEffect, useState } from 'react';
 
 const API_Get = 'https://localhost/database%20app/api/api.php?table=urzadzenia';
 const API_Other = "https://localhost/database%20app/api/api.php";
 
 export const Tabela = () => {
-	const [selectedCategory, setSelectedCategory] = useState("Wszystkie");
-	const [selectedUwiw, setSelectedUwiw] = useState("nastanie");
-	let devices = initialDevices;
+	const [ selectedCategory, setSelectedCategory ] = useState( "Wszystkie" );
+	const [ selectedUwiw, setSelectedUwiw ] = useState( "nastanie" );
+	// let devices = initialDevices;
+	const [ devices, setUrzadzenia ] = useState( initialDevices );
 	
-	// useEffect( () => { fetchDatabase } );
+	useEffect( () => { fetchUrzadzenia(); }, [] );
+	
+	const fetchUrzadzenia = async () => {
+		try{
+			const response = await axios.get( API_Get );
+			setUrzadzenia( response.data );
+		} catch( error ){
+			console.error( 'Błąd podczas pobierania urzadzeń:', error );
+		}
+	};
 	
 	return (
 		<div className="tabela-container">
