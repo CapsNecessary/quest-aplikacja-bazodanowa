@@ -17,10 +17,10 @@
 						printTableAsJson( 'urzadzenia' );
 						break;
 					case 'uzytkownicy':
-						printTableAsJson( `uzytkownicy` );
+						printTableAsJson( 'uzytkownicy' );
 						break;
 					case 'wydarzenia':
-						printTableAsJson( `wydarzenia` );
+						printTableAsJson( 'wydarzenia' );
 						break;
 					default:
 						http_response_code( 404 );
@@ -77,6 +77,9 @@
 	
 	function printTableAsJson( $t ){
 		global $c;
-		print( json_encode( $c -> query( "SELECT * FROM `$t`" ) -> fetch_assoc() ) );
+		$q = $c -> query( "SELECT * FROM `$t`" );
+		$ret = array();
+		while( $r = $q -> fetch_row() ) array_push( $ret, json_encode( $r ) );
+		print( json_encode( $ret ) );
 	}
 ?>
