@@ -14,8 +14,10 @@ CREATE TABLE IF NOT EXISTS `urzadzenia` (
 	`mac` text NOT NULL,
 	`licencje` text NOT NULL,
 	`inne` text NOT NULL,
+	`data zakupu` date NOT NULL,
+	`status` text NOT NULL,
 	PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin2;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 CREATE TABLE IF NOT EXISTS `uzytkownicy` (
 	`id` int(9) NOT NULL AUTO_INCREMENT,
@@ -25,7 +27,7 @@ CREATE TABLE IF NOT EXISTS `uzytkownicy` (
 	`ranga` text NOT NULL,
 	`has` text NOT NULL,
 	PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=latin2;
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8mb4;
 
 CREATE TABLE IF NOT EXISTS `wydarzenia` (
 	`id` int(11) NOT NULL AUTO_INCREMENT,
@@ -38,4 +40,4 @@ CREATE TABLE IF NOT EXISTS `wydarzenia` (
 	`user` text,
 	`dataczas` datetime DEFAULT NULL,
 	PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4243 DEFAULT CHARSET=latin2;
+) ENGINE=InnoDB AUTO_INCREMENT=4243 DEFAULT CHARSET=utf8mb4;
