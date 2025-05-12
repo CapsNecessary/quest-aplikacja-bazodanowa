@@ -28,31 +28,33 @@
 				}
 				break;
 			case 'POST':
-				$uwiw		= $in[ 'uwiw' ]		 ?? "''";		$kat	 = $in[ 'kat' ]		?? "''";
-				$sala		= $in[ 'sala' ]		 ?? "''";		$lpWSali = $in[ 'lpWSali' ]	?? "''";
-				$model		= $in[ 'model' ]	 ?? "''";		$wyglad	 = $in[ 'wyglad' ]	?? "''";
-				$processor	= $in[ 'processor' ] ?? "''";		$ram	 = $in[ 'ram' ]		?? "''";
-				$plyta		= $in[ 'plyta' ]	 ?? "''";		$dysk	 = $in[ 'dysk' ]	?? "''";
-				$przekatna	= $in[ 'przekatna' ] ?? "''";		$mac	 = $in[ 'mac' ]		?? "''";
-				$licencje	= $in[ 'licencje' ]	 ?? "''";		$inne	 = $in[ 'inne' ]	?? "''";
-				$q = $c -> prepare( "INSERT INTO `urzadzenia`( `uwiw`, `kategoria`, `sala`, `lpwsali`, `model`, `wyglad`, `procesor`, `ram`, `plyta`, `dysk`, `przekatna`, `mac`, `licencje`, `inne`)
-					VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ? )" );
-				$q -> bind_param( 'ssssssssssssss', $uwiw, $kat, $sala, $lpWSali, $model, $wyglad, $processor, $ram, $plyta, $dysk, $przekatna, $mac, $licencje, $inne );
+				$uwiw			= $in[ 'uwiw' ]			?? "''";		$kat	 = $in[ 'kat' ]		?? "''";
+				$sala			= $in[ 'sala' ]			?? "''";		$lpWSali = $in[ 'lpWSali' ]	?? "''";
+				$model			= $in[ 'model' ]		?? "''";		$wyglad	 = $in[ 'wyglad' ]	?? "''";
+				$processor		= $in[ 'processor' ]	?? "''";		$ram	 = $in[ 'ram' ]		?? "''";
+				$plyta			= $in[ 'plyta' ]		?? "''";		$dysk	 = $in[ 'dysk' ]	?? "''";
+				$przekatna		= $in[ 'przekatna' ]	?? "''";		$mac	 = $in[ 'mac' ]		?? "''";
+				$licencje		= $in[ 'licencje' ]		?? "''";		$inne	 = $in[ 'inne' ]	?? "''";
+				$data_zakupu	= $in[ 'data_zakupu' ]	?? "''";		$status	 = $in[ 'status' ]	?? "''";
+				$q = $c -> prepare( "INSERT INTO `urzadzenia`( `uwiw`, `kategoria`, `sala`, `lpwsali`, `model`, `wyglad`, `procesor`, `ram`, `plyta`, `dysk`, `przekatna`, `mac`, `licencje`, `inne`, `data_zakupu`, `status`)
+					VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ? )" );
+				$q -> bind_param( 'ssssssssssssssds', $uwiw, $kat, $sala, $lpWSali, $model, $wyglad, $processor, $ram, $plyta, $dysk, $przekatna, $mac, $licencje, $inne, $data_zakupu, $status );
 				$q -> execute();
 				break;
 			case 'PUT':
 				$id = $in[ 'id' ];
 				if( isSet( $id ) ){
-					$uwiw		= $in[ 'uwiw' ]		 ?? "''";		$kat	 = $in[ 'kat' ]		?? "''";
-					$sala		= $in[ 'sala' ]		 ?? "''";		$lpWSali = $in[ 'lpWSali' ]	?? "''";
-					$model		= $in[ 'model' ]	 ?? "''";		$wyglad	 = $in[ 'wyglad' ]	?? "''";
-					$processor	= $in[ 'processor' ] ?? "''";		$ram	 = $in[ 'ram' ]		?? "''";
-					$plyta		= $in[ 'plyta' ]	 ?? "''";		$dysk	 = $in[ 'dysk' ]	?? "''";
-					$przekatna	= $in[ 'przekatna' ] ?? "''";		$mac	 = $in[ 'mac' ]		?? "''";
-					$licencje	= $in[ 'licencje' ]	 ?? "''";		$inne	 = $in[ 'inne' ]	?? "''";
+					$uwiw			= $in[ 'uwiw' ]			?? "''";		$kat	 = $in[ 'kat' ]		?? "''";
+					$sala			= $in[ 'sala' ]			?? "''";		$lpWSali = $in[ 'lpWSali' ]	?? "''";
+					$model			= $in[ 'model' ]		?? "''";		$wyglad	 = $in[ 'wyglad' ]	?? "''";
+					$processor		= $in[ 'processor' ]	?? "''";		$ram	 = $in[ 'ram' ]		?? "''";
+					$plyta			= $in[ 'plyta' ]		?? "''";		$dysk	 = $in[ 'dysk' ]	?? "''";
+					$przekatna		= $in[ 'przekatna' ]	?? "''";		$mac	 = $in[ 'mac' ]		?? "''";
+					$licencje		= $in[ 'licencje' ]		?? "''";		$inne	 = $in[ 'inne' ]	?? "''";
+					$data_zakupu	= $in[ 'data_zakupu' ]	?? "''";		$status	 = $in[ 'status' ]	?? "''";
 					$q = $c -> prepare( "UPDATE `urzadzenia` SET `uwiw` = ?,`kategoria` = ?,`sala` = ?,`lpwsali` = ?,`model` = ?,`wyglad` = ?,`procesor` = ?,`ram` = ?,`plyta` = ?,
-						`dysk` = ?, `przekatna` = ?,`mac` = ?,`licencje` = ?,`inne` = ? where id=?" );
-					$q -> bind_param( 'ssssssssssssssi', $uwiw, $kat, $sala, $lpWSali, $model, $wyglad, $processor, $ram, $plyta, $dysk, $przekatna, $mac, $licencje, $inne, $id );
+						`dysk` = ?, `przekatna` = ?,`mac` = ?,`licencje` = ?,`inne` = ?, `data_zakupu` = ?, `status` = ? where id=?" );
+					$q -> bind_param( 'ssssssssssssssbsi', $uwiw, $kat, $sala, $lpWSali, $model, $wyglad, $processor, $ram, $plyta, $dysk, $przekatna, $mac, $licencje, $inne, $data_zakupu, $status, $id );
 					$q -> execute();
 				}
 				else http_response_code( 418 );

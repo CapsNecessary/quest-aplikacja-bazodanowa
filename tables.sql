@@ -14,8 +14,8 @@ CREATE TABLE IF NOT EXISTS `urzadzenia` (
 	`mac` text NOT NULL,
 	`licencje` text NOT NULL,
 	`inne` text NOT NULL,
-	`data zakupu` date NOT NULL,
-	`status` text NOT NULL,
+	`data zakupu` date NOT NULL DEFAULT CURRENT_TIMESTAMP,
+	`status` text NOT NULL DEFAULT "",
 	PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 

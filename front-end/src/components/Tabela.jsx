@@ -37,7 +37,8 @@ export const Tabela = () => {
 				res[ i ][ "mac" ]			= res[ i ][ 12 ];
 				res[ i ][ "licencje" ]		= res[ i ][ 13 ];
 				res[ i ][ "inne" ]			= res[ i ][ 14 ];
-				//`id`, `uwiw`, `kategoria`, `sala`, `lpwsali`, `model`, `wyglad`, `procesor`, `ram`, `plyta`, `dysk`, `przekatna`, `mac`, `licencje`, `inne`
+				res[ i ][ "data_zakupu" ]	= res[ i ][ 15 ];
+				res[ i ][ "status" ]		= res[ i ][ 16 ];
 			}
 			setUrzadzenia( res );
 			console.log( res );
@@ -76,8 +77,8 @@ export const Tabela = () => {
 						<div className="kategoria">{ device.kategoria }</div>
 						<div className="model">Model: { device.model }<br />{ device.przekatna && `Przekątna: ${ device.przekatna }` }<br /></div>
 						<div className="obudowa">{ device.obudowa }</div>
-						<div className="data-zakupu">{ !!device?.data_zakupu ? device.data_zakupu : "Brak" }</div>
-						<div className="status">{ !!device?.status ? device.status : "Brak" }</div>
+						<div className="data-zakupu">{ device.data_zakupu }</div>
+						<div className="status">{ device.status }</div>
 						<div className="operacje"><a href={ `#operacja=edit&id=${ device.id }` } className="button">Edytuj</a></div>
 						<div className="operacje"><a href={ `#operacja=przen&id=${ device.id }` } className="button">Przenieś</a></div>
 						<div className="operacje"><a href={ `#operacja=del&id=${ device.id }` } className="button">Kasacja</a></div>
