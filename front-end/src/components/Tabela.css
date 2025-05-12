@@ -88,7 +88,7 @@ div.status { display: none; }
 	padding: 8px;
 	margin: 2px 0;
 	cursor: pointer;
-	transition: background 0.3s;
+	transition: background 0.15s;
 	text-align: center;
 	background: var( --background ); color: var( --text );
 	border: 1px solid var( --text );
