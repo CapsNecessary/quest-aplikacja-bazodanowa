@@ -75,7 +75,7 @@ export const Tabela = () => {
 						<div className="uwiw">{ device.uwiw }</div>
 						<div className="sala">{ device.sala }</div>
 						<div className="kategoria">{ device.kategoria }</div>
-						<div className="model">{ device.model && `Model: ${ device.model }` }{ device.przekatna && `<br/>Przekątna: ${ device.przekatna }` }</div>
+						<div className="model">{ device.model && `Model: ${ device.model }` }{ device.model && device.przekatna && <br/> }{ device.przekatna && `\nPrzekątna: ${ device.przekatna }` }</div>
 						<div className="obudowa">{ device.obudowa }</div>
 						<div className="data-zakupu">{ device.data_zakupu }</div>
 						<div className="status">{ device.status }</div>
