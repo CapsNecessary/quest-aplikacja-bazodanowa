@@ -20,7 +20,6 @@ export const Tabela = () => {
 		try{
 			const response = await axios.get( API_Get );
 			let res = response.data;
-			console.log( res.join() );
 			for (let i = 0; i < res.length; i++){
 				res[ i ][ "id" ]			= res[ i ][ 0 ];
 				res[ i ][ "uwiw" ]			= res[ i ][ 1 ];
@@ -41,7 +40,6 @@ export const Tabela = () => {
 				res[ i ][ "status" ]		= res[ i ][ 16 ];
 			}
 			setUrzadzenia( res );
-			console.log( res );
 		} catch( error ){
 			console.error( 'Błąd podczas pobierania urzadzeń:', error );
 		}
